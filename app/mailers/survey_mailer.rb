@@ -5,6 +5,6 @@ class SurveyMailer < ApplicationMailer
     @click_tracker.update(sent_on: Time.now, email: "Deleted")
 
 
-    mail(to: params[:email], subject: 'Interviewing Feedback')
+    mail(to: params[:email], subject: 'Coinbase Interview Feedback')
   end
 end
