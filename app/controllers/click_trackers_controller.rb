@@ -31,7 +31,7 @@ class ClickTrackersController < ApplicationController
 
   def index
     @experiment = Experiment.find(params[:experiment_id])
-    @click_trackers = @experiment.click_trackers
+    @click_trackers = @experiment.click_trackers.sort
   end
 
   def redirect
