@@ -1,24 +1,6 @@
-# README
+# Simple Experiment Tool
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Tracks open rate of links in an email. 
+Allows users to set a interval window for an experiment. 
+50% of emails are sent immediatly. 50% are sent after the time window.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
