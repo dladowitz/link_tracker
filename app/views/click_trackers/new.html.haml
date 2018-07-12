@@ -7,6 +7,7 @@
       .form-group
         = f.label :email
         = f.email_field :email, class: "form-control"
-        %small.form-text.text-muted Email address is only stored until message is sent. Then it is deleted.
+        %small.form-text.text-muted Email addresses are only stored until message is sent. Then they are deleted.
 
-      = f.submit class: "btn btn-lg btn-primary"
+      = f.submit "Send New Email", class: "btn btn-lg btn-primary"
+      %small.form-text.text-muted 50% of emails we be sent in the future according to the experiements wait interval.

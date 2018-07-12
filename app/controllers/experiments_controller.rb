@@ -4,6 +4,9 @@ class ExperimentsController < ApplicationController
 
   def index
     @experiments = Experiment.all
+
+    check_click_percentages
+
   end
 
   def new
@@ -21,6 +24,7 @@ class ExperimentsController < ApplicationController
   def create
     if Experiment.create! experiment_params
       flash[:success] = "Experiment Created!"
+      redirect_to experiments_path
     else
       flash[:danger] = "Something went wrong"
       render @experiment
@@ -35,5 +39,17 @@ class ExperimentsController < ApplicationController
 
   def experiment_params
     params.require(:experiment).permit(:survey_link, :wait_interval_days)
+  end
+
+  def check_click_percentages
+    @experiments.each do |experiment|
+      if experiment.click_trackers.any?
+        latest_updated_click_tracker = experiment.click_trackers.max_by(&:updated_at)
+
+        if experiment.updated_at < latest_updated_click_tracker.updated_at
+          experiment.recalculate_click_percentages
+        end
+      end
+    end
   end
 end

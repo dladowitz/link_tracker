@@ -14,7 +14,7 @@
       - @click_trackers.each do |click_tracker|
         %tr
           %th{:scope => "row"}= click_tracker.email
-          %td= click_tracker.created_at
-          %td= click_tracker.clicked_on_at
-          %td= click_tracker.sent_on
+          %td= click_tracker.created_at.to_date if click_tracker.created_at
+          %td= click_tracker.clicked_on_at.to_date if click_tracker.clicked_on_at
+          %td= click_tracker.sent_on.to_date if click_tracker.sent_on
           %td= click_tracker.send_immediately ? "Yes" : "No"

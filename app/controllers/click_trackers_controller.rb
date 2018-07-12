@@ -13,7 +13,7 @@ class ClickTrackersController < ApplicationController
     if @click_tracker
       flash[:success] = "Email Recorded"
       redirect_to experiment_click_trackers_path(@experiment)
-      send_survey_email #TODO put back if send_immediately
+      send_survey_email if send_immediately
     else
       flash[:danger] = "Something went wrong"
       render @click_tracker
@@ -32,6 +32,12 @@ class ClickTrackersController < ApplicationController
   def index
     @experiment = Experiment.find(params[:experiment_id])
     @click_trackers = @experiment.click_trackers
+  end
+
+  def redirect
+    @click_tracker = ClickTracker.find(params[:id])
+    @click_tracker.update(clicked_on_at: Time.now)
+    redirect_to @click_tracker.experiment.survey_link
   end
 
   private

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_12_031148) do
+ActiveRecord::Schema.define(version: 2018_07_12_063817) do
 
   create_table "click_trackers", force: :cascade do |t|
     t.string "email"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2018_07_12_031148) do
     t.string "survey_link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "percent_immediate"
+    t.float "percent_interval"
   end
 
 end

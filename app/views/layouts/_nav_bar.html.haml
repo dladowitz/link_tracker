@@ -2,8 +2,6 @@
   %li.nav-item
     %a.nav-link.active{:href => experiments_path} Experiments
   %li.nav-item
-    %a.nav-link{:href => "#"} Send/Schedule Email
+    %a.nav-link{:href => new_click_tracker_path} Send New Email
   %li.nav-item
-    %a.nav-link{:href => "#"} Link
-  %li.nav-item
-    %a.nav-link.disabled{:href => "#"} Disabled
+    %a.nav-link{:href => "#{Rails.application.config.domain}/rails/mailers/survey_mailer/recruiting_survey"} Email Template
