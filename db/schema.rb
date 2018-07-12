@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2018_07_12_063817) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "click_trackers", force: :cascade do |t|
     t.string "email"
     t.datetime "clicked_on_at"
