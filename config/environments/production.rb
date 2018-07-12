@@ -79,6 +79,12 @@ Rails.application.configure do
    :enable_starttls_auto => true
   }
 
+  # Enable preview mailers
+  config.action_mailer.show_previews = true
+
+  # If you're using RSpec make sure to add the link changing where the previews path is.
+  config.action_mailer.preview_path ||= defined?(Rails.root) ? "#{Rails.root}/spec/mailers/previews" : nil
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
