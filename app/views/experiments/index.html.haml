@@ -1,5 +1,4 @@
 .row
-  = link_to "Send New Email", new_click_tracker_path, class: "btn btn-primary mb-4 mr-2"
   = link_to "Create New Experiment", new_experiment_path, class: "btn btn-primary mb-4"
 .row
   %table.table
@@ -8,7 +7,7 @@
         %th{:scope => "col"} Experiment #
         %th{:scope => "col"} Wait Interval (days)
         %th{:scope => "col"} Survey Link
-        %th{:scope => "col"} Total Sent
+        %th{:scope => "col"} Total
         %th{:scope => "col"} % Clicked (Immediate)
         %th{:scope => "col"} % Clicked (Interval)
         %th{:scope => "col"} Sent
@@ -18,8 +17,8 @@
         %tr
           %th{:scope => "row"}= experiment.id
           %td= experiment.wait_interval_days
-          %td= link_to experiment.survey_link, experiment.survey_link
-          %td= "?"
-          %td= "?"
-          %td= "?"
+          %td= link_to truncate(experiment.survey_link), experiment.survey_link
+          %td= experiment.click_trackers.count
+          %td= number_to_percentage(experiment.percent_immediate * 100, precision: 0)
+          %td= number_to_percentage(experiment.percent_interval * 100, precision: 0)
           %td= link_to "Emails", experiment_click_trackers_path(experiment)
