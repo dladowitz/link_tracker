@@ -8,7 +8,7 @@ end
 task :send_interval_emails => :environment do
   waiting_to_send = ClickTracker.where(send_immediately: false, sent_on: nil)
   should_send = waiting_to_send.select do |click_tracker|
-    Time.now > (click_tracker.created_at + click_tracker.experiment.wait_interval_days)
+    Time.now > (click_tracker.created_at + click_tracker.experiment.wait_interval_days.days)
   end
 
   puts "\n------------- Interval Emails to be sent: #{should_send.count} ------------------------"
