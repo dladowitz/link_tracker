@@ -11,7 +11,10 @@ task :send_interval_emails => :environment do
     Time.now < (click_tracker.created_at + click_tracker.experiment.wait_interval_days)
   end
 
+  puts "\n------------- Interval Emails to be sent: #{should_send.count} ------------------------"
+
   should_send.each do |click_tracker|
+    puts "\n++++ Sending email for click_tracker.id:: #{click_tracker.id} ++++"
     SurveyMailer.with(email: click_tracker.email, click_tracker_id: click_tracker.id).recruiting_survey.deliver_now
   end
 end
