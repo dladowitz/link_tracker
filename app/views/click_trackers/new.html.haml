@@ -4,6 +4,7 @@
       .form-group
         = f.label :experiment_id
         = select_tag :experiment_id, options_from_collection_for_select(@experiments, "id", "id"), class: "form-control"
+        %small.form-text.text-muted Choose the experiment the email should be part of.
       .form-group
         = f.label :email
         = f.email_field :email, class: "form-control"

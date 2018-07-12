@@ -5,12 +5,12 @@
     %thead
       %tr
         %th{:scope => "col"} Experiment #
-        %th{:scope => "col"} Wait Interval (days)
+        %th{:scope => "col","data-placement" => "top", "data-toggle" => "tooltip", :title => "Number of Days System Waits Before Sending Email"} Wait Interval (days)
         %th{:scope => "col"} Survey Link
-        %th{:scope => "col"} Total
-        %th{:scope => "col"} % Clicked (Immediate)
-        %th{:scope => "col"} % Clicked (Interval)
-        %th{:scope => "col"} Sent
+        %th{:scope => "col","data-placement" => "top", "data-toggle" => "tooltip", :title => "Total Emails (sent and pending)"} Total
+        %th{:scope => "col","data-placement" => "top", "data-toggle" => "tooltip", :title => "This Group Was Sent Emails Immediately"} % Clicked (Immediate)
+        %th{:scope => "col","data-placement" => "top", "data-toggle" => "tooltip", :title => "This Group Was Sent Emails After Experiment's Interval Window"} % Clicked (Interval)
+        %th{:scope => "col","data-placement" => "top", "data-toggle" => "tooltip", :title => "View Send And Pending Emails"} Sent
 
     %tbody
       - @experiments.each do |experiment|
@@ -22,3 +22,8 @@
           %td= number_to_percentage(experiment.percent_immediate * 100, precision: 0)
           %td= number_to_percentage(experiment.percent_interval * 100, precision: 0)
           %td= link_to "Emails", experiment_click_trackers_path(experiment)
+:javascript
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
