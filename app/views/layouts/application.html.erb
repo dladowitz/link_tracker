@@ -10,6 +10,9 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container mt-3">
+      <%= render "layouts/nav_bar" %>
+      <%= yield %>
+    </div>
   </body>
 </html>

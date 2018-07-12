@@ -1,0 +1,18 @@
+.container
+  .row
+    .jumbotron
+      %h1.display-4 Create a new experiment
+      %p.lead
+        Experiments will send emails to 50% of recipients immediately.
+        %br
+        It will wait the set number of days to send the others.
+      %hr.my-4/
+
+      = form_for @experiment do |f|
+        .form-group
+          = f.label :survey_link
+          = f.text_field :survey_link, class: "form-control"
+        .form-group
+          = f.label :wait_interval_days, "Number of days to wait before sending"
+          = f.number_field :wait_interval_days, class: "form-control", step: 1
+        = f.submit class: "btn btn-lg btn-primary"

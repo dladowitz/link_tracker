@@ -1,0 +1,9 @@
+// https://github.com/twbs/bootstrap-rubygem
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
+
+
+//nav bar
+.nav.nav-tabs {
+  margin-bottom: 30px
+}
